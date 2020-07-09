@@ -11,10 +11,11 @@ int Valor (int );
 
 int EsPalabra (const char *);
 int main () {
-	char s1[] = "1234";
+	char s1[] = "12345";
 	if (! Verifica(s1)) printf("Caracteres invalidos\n");return 0;
 	if (EsPalabra(s1))printf("Pertenece al lenguaje\n");return 0;
-	printf("no pertenece al lenguaje\n"); return 0;}
+	printf("no pertenece al lenguaje\n"); return 0;
+}
 	
 int Verifica (char *s) {
 	unsigned i;
