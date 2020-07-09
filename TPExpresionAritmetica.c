@@ -9,10 +9,20 @@ int Valor (int );
 
 int EsExpresion (const char *);
 
-int ObtieneValorExp (const char *);
+void ObtieneValorExp (const char *);
+
+void sumar(int ,int );
+void restar(int ,int );
+
+void multiplicar(int ,int );
+
+void dividir(int ,int );
+
 
 int main () {
-	char s1[] = "2+1";
+	char s1[] = "";
+printf("Ingrese Expresion\n");
+scanf("%s",s1);
 	int valor ;
 
 	if (! Verifica(s1)) 
@@ -23,8 +33,8 @@ int main () {
 	if (EsExpresion(s1))
 	{
 		printf("ES EXPRESION\n");
-		valor = ObtieneValorExp(s1);
-		printf("%d \n",valor);
+		ObtieneValorExp(s1);
+		
 		return 0;
 	}
 	printf("no pertenece al lenguaje\n"); 
@@ -34,7 +44,7 @@ int main () {
 int Verifica (char *s) {
 	unsigned i;
 	for (i=0; s[i]; i++){
-		if (! (isdigit(s[i]) || s[i] == '+' || s[i] == '-' ))
+		if (! (isdigit(s[i]) || s[i] == '+' || s[i] == '-' || s[i] == '/' || s[i] == '*' ))
 		return 0;
 	}
 	return 1;
@@ -86,7 +96,7 @@ int ColumnaExp (int c)
 	} /* fin Columna */
 
 /*en fase de prueba OBTENER PALABRA*/
-int ObtieneValorExp (const char *cadena) {
+void ObtieneValorExp (const char *cadena) {
 /* Tabla de Transicione| D + - / .					*/
 static int tt [5][5] = {{1,4,4,4,4},/* estado inicial */
 						{1,2,2,2,2},
@@ -120,7 +130,7 @@ e = tt [e][ColumnaExp(c)];
 	if (c=='-'){ op = '-';}
 	if (c=='/'){ op = '/';}
 	if (c=='*'){ op = '*';}
-	printf("leguee al case  de operaciones %d \n",op);
+	
 	break;
 	case 3:
 		c2 =c2*10+Valor(c);
@@ -133,13 +143,13 @@ c = cadena[++i];
 if (e == 3) { /* estado final */
 switch (op){
 	
-	case '+': return c1+c2;
+	case '+':sumar(c1,c2);
 	break;
-	case '-':return c1-c2;
+	case '-':restar(c1,c2);
 	break;
-	case'/':return c1/c2;
+	case'/':dividir(c1,c2);
 	break;
-	case '*':return c1*c2;
+	case '*':multiplicar(c1,c2);
 	break;
 	default /* error */: break;
 	
@@ -147,4 +157,28 @@ switch (op){
 
 }
 
+}
+
+void sumar(int a,int b){
+int resultado=0;
+resultado = a + b;
+printf("%d \n",resultado);
 } /* fin ObtieneValor */
+
+void restar(int a,int b){
+unsigned resultado =0;
+resultado = a - b;
+printf("%d \n",resultado);
+}
+void dividir(int a,int b){
+	float resultado =0;
+	resultado = a/b;
+	printf("%f \n",resultado);
+
+}
+void multiplicar(int a,int b){
+	int resultado =0;
+	resultado = a*b;
+	printf("%d \n",resultado);
+
+}
