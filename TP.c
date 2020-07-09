@@ -3,7 +3,7 @@
 #include <ctype.h> /* isdigit */
 
 int Verifica (char *);/* que los caracteres pertenezcan al alfabeto */
-contieneSufijo(char[])
+
 int Columna (int);/* dado un caracter, determina la columna que le corresponde */
 int Valor (int );
 int EsPalabra (const char *);
