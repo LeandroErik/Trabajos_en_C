@@ -4,7 +4,7 @@
 int Verifica (char *); /* que los caracteres pertenezcan al alfabeto */
 int Columna (int); /* dado un caracter, determina la columna que le  corresponde */
 int EsPalabra (const char *);
-int ObtieneValor (const char *);
+void ObtieneValor (const char *);
 
 int main () {
 	char s1[] = "";
@@ -28,10 +28,8 @@ int main () {
 	
 		printf("Calculando Valor\n");
 		
-	 a = ObtieneValor(s1);
-	
-		
-		printf("El valor es %d.\n", a);
+	 	ObtieneValor(s1);
+	 
 		return 0;
 	}
 	printf("no pertenece al lenguaje\n"); 
@@ -72,23 +70,11 @@ int Columna (int c) {
  }
 } /* fin Columna */
 
-int EsPalabra2 (const char *s) { /* Automata 2 */
- static int tt [4][3] = {{2,1,1}, /* Tabla de Transiciones */
- 						{2,3,3}, /* 2 es el estado final */
-						{2,3,3}, /* 3 es el estado de rechazo */
-						{3,3,3}};
- int e; /* estado actual del automata */
- unsigned int i; /* recorre la cadena */
- for (e=0,i=0; s[i]!='\0' && e!=3; i++)
- e = tt [e][Columna(s[i])];
- return e==2; /* estado final? retorna 1 */
-} /* fin EsPalabra2 */
-
 int Valor (int c) {
  return (c - '0');
 } /* fin Valor */
 
-int ObtieneValor (const char *cadena) {
+void ObtieneValor (const char *cadena) {
  static tt [4][3] = {{2,1,1},
  					{2,3,3},
 					{2,3,3},
@@ -113,7 +99,7 @@ negativo */
  }
  if (e == 2) { /* estado final */
 	 
-	 return  s * a;
+	printf("Resultado : %d \n",s * a);
 
 }
 } /* fin ObtieneValor */
