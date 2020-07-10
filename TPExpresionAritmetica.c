@@ -1,39 +1,40 @@
-#include <stdio.h> /* printf */
-
-#include <ctype.h> /* isdigit */
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
 
 int Verifica (char *);/* que los caracteres pertenezcan al alfabeto */
-
 int ColumnaExp (int);/* dado un caracter, determina la columna que le corresponde */
 int Valor (int );
-
 int EsExpresion (const char *);
-
 void ObtieneValorExp (const char *);
 
+/*Funciones matematicas*/
 void sumar(int ,int );
 void restar(int ,int );
-
 void multiplicar(int ,int );
-
 void dividir(int ,int );
 
 
-int main () {
-	char s1[] = "";
-printf("Ingrese Expresion\n");
-scanf("%s",s1);
-	int valor ;
+int main(int argc, char *argv[]){
+	if ( argc == 1 )
+	{
+		printf("Debe ingresar una Cadena en Linea de Comandos\n");
+		return EXIT_FAILURE;
+	}
+	if ( argc != 2 ){
+		printf("Cantidad de Argumentos Incorrecta\n");
+		return EXIT_FAILURE;
+	}
 
-	if (! Verifica(s1)) 
+	if (! Verifica(argv[1])) 
 	{
 		printf("Caracteres invalidos\n");
 		return 0;}
 	
-	if (EsExpresion(s1))
+	if (EsExpresion(argv[1]))
 	{
 		printf("ES EXPRESION\n");
-		ObtieneValorExp(s1);
+		ObtieneValorExp(argv[1]);
 		
 		return 0;
 	}
@@ -97,7 +98,7 @@ int ColumnaExp (int c)
 
 /*en fase de prueba OBTENER PALABRA*/
 void ObtieneValorExp (const char *cadena) {
-/* Tabla de Transicione| D + - / .					*/
+/* Tabla de Transicione| D + - / *				*/
 static int tt [5][5] = {{1,4,4,4,4},/* estado inicial */
 						{1,2,2,2,2},
 						{3,4,4,4,4},
@@ -123,18 +124,15 @@ e = tt [e][ColumnaExp(c)];
 	switch (e) {
 	case 1:
 		c1=c1*10+Valor(c);
-		printf("leguee al case%d \n",c1);
-	
 	break;
-	case 2: if (c=='+') op = '+';
+	case 2: 
+	if (c=='+') op = '+';
 	if (c=='-'){ op = '-';}
 	if (c=='/'){ op = '/';}
 	if (c=='*'){ op = '*';}
-	
 	break;
 	case 3:
 		c2 =c2*10+Valor(c);
-		printf("leguee al case%d \n",c2);
 	default /* error */: break;
 	}
 c = cadena[++i];
@@ -154,9 +152,7 @@ switch (op){
 	default /* error */: break;
 	
 }
-
 }
-
 }
 
 void sumar(int a,int b){

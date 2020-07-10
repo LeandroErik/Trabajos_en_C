@@ -39,7 +39,7 @@ int main(int argc, char *argv[]){
 		
 	}else if (EsPalabraHexadecimal(argv[1])){	
 		printf("****************************************************************************************\n");
-		printf("*Pertenece al lenguaj el lenguaje descripto en el para constantes enteras hexadecimales*\n");
+		printf("*Pertenece al lenguaje el lenguaje descripto en el para constantes enteras hexadecimales*\n");
 		printf("****************************************************************************************\n");
 		return 0;
 	}	

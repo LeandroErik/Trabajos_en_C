@@ -1,34 +1,38 @@
-#include <stdio.h> /* printf */
-#include <ctype.h> /* isdigit */
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
 
 int Verifica (char *); /* que los caracteres pertenezcan al alfabeto */
 int Columna (int); /* dado un caracter, determina la columna que le  corresponde */
 int EsPalabra (const char *);
 void ObtieneValor (const char *);
 
-int main () {
-	char s1[] = "";
-	int  p= 0;
-	int a =0;
-	
-	int result=0;
-	printf("Ingrese cadena \n");
-	scanf("%s",s1);
+int main(int argc, char *argv[]){
+	if ( argc == 1 )
+	{
+		printf("Debe ingresar una Cadena en Linea de Comandos\n");
+		return EXIT_FAILURE;
+	}
+	if ( argc != 2 ){
+		printf("Cantidad de Argumentos Incorrecta\n");
+		return EXIT_FAILURE;
+	}
+
  
- if (! Verifica(s1)) 
+ if (! Verifica(argv[1])) 
 	{
 		printf("Caracteres invalidos\n");
 		return 0;
 
 	}
 	
-	if (EsPalabra(s1))
+	if (EsPalabra(argv[1]))
 	{
 		printf("Pertenece al lenguaje\n");
 	
 		printf("Calculando Valor\n");
 		
-	 	ObtieneValor(s1);
+	 	ObtieneValor(argv[1]);
 	 
 		return 0;
 	}
@@ -75,7 +79,7 @@ int Valor (int c) {
 } /* fin Valor */
 
 void ObtieneValor (const char *cadena) {
- static tt [4][3] = {{2,1,1},
+ static int tt [4][3] = {{2,1,1},
  					{2,3,3},
 					{2,3,3},
 					{3,3,3}};
