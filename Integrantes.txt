@@ -7,6 +7,7 @@ Trabajo Practico de Automatas
 -Erik Quispe - Legajo:172286
 
 			Soluciones Propuestas
+
 			Consigna:
 En cada caso, escriba un programa ANSI C que pruebe la implementación realizada.
 Modifique el AFD que reconoce al lenguaje descripto en el para constantes enteras decimales con
@@ -15,14 +16,17 @@ signo para_
 ? Constantes hexadecimales
 ? Agregue el reconocimiento de los sufijos
 
-Implemente una única solución que reconozca las constantes enteras en C descriptas en la gramatica
-del lenguaje.
-
 Solucion Propuesta en :
 		decimalesSufijos.c
 		hexadecimalSufijo.c
 		octalSufijo.c
 
+  
+			Consigna:
+Implemente una única solución que reconozca las constantes enteras en C descriptas en la gramatica
+del lenguaje.
+Solucion Propuesta en :
+		reconocedorEntero.c
 		  
 			Consigna:
 Desarrolle un programa comando que reciba una cadena que puede representar una constante entera
