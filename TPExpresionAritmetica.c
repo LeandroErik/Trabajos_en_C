@@ -4,9 +4,9 @@
 
 int Verifica (char *);/* que los caracteres pertenezcan al alfabeto */
 int ColumnaExp (int);/* dado un caracter, determina la columna que le corresponde */
-int Valor (int );
-int EsExpresion (const char *);
-void ObtieneValorExp (const char *);
+int Valor (int );/*Obtiene el valor de la tabla*/
+int EsExpresion (const char *);/*Verifica que sea reconocido por el lenguaje*/
+void ObtieneValorExp (const char *);/*Obtiene la expresion*/
 
 /*Funciones matematicas*/
 void sumar(int ,int );
@@ -33,13 +33,14 @@ int main(int argc, char *argv[]){
 	
 	if (EsExpresion(argv[1]))
 	{
-		printf("ES EXPRESION\n");
+		printf("Expresion Reconocida\n");
+
 		ObtieneValorExp(argv[1]);
 		
 		return 0;
 	}
-	printf("no pertenece al lenguaje\n"); 
-	return 0;
+	printf("No pretenece al lenguaje\n"); 
+		return 0;
 	}
 	
 int Verifica (char *s) {
@@ -49,29 +50,28 @@ int Verifica (char *s) {
 		return 0;
 	}
 	return 1;
-} /* fin Verifica */
+} 
 
 int Valor (int c) {
 return (c - '0');
 }
 
-/*Otros requerimientos*/
-int EsExpresion (const char *cadena) { /* Automata 1 */
+int EsExpresion (const char *cadena) { 
+	/* Automata 1 */
 /* Tabla de Transicione| D + - / *					*/
 static int tt [5][5] = {{1,4,4,4,4},/* estado inicial */
 						{1,2,2,2,2},
 						{3,4,4,4,4},
 						{3,4,4,4,4},
 						{4,4,4,4,4}};
-int e = 0;
+
+int e = 0;/*primer estado*/
 unsigned int i = 0;
 int c = cadena[0];
-	/* recorre la cadena */
-	/* primer caracter */
 
 	while (c != '\0') {
 	e = tt[e][ColumnaExp(c)];
-		/* nuevo estado */
+		/* siguiente estado */
 	c = cadena[++i];
 		/* proximo caracter */
 	}
@@ -79,7 +79,7 @@ int c = cadena[0];
 	return 1;
 	
 return 0;
-} /* fin Decimal*/
+} 
 
 int ColumnaExp (int c) 
 	{
@@ -96,7 +96,7 @@ int ColumnaExp (int c)
 					}
 	} /* fin Columna */
 
-/*en fase de prueba OBTENER PALABRA*/
+/*Obteniendo Palabra*/
 void ObtieneValorExp (const char *cadena) {
 /* Tabla de Transicione| D + - / *				*/
 static int tt [5][5] = {{1,4,4,4,4},/* estado inicial */
@@ -112,54 +112,55 @@ int c = cadena[0];
 int c1 = 0;
 int c2 = 0;
 /* primer caracter */
-long a = 0;
-int esPrimerValor=1;
-/* contiene valor numerico absoluto de la
-cadena */
-char op ;
-/* signo del número: 1 = positivo; -1 =
-negativo */
+
+char operacion;/*contiene la operacion realizar*/
+
 while (c != '\0') {
 e = tt [e][ColumnaExp(c)];
 	switch (e) {
-	case 1:
+	case 1:/*1er estado ,va almacenando el primer valor*/
 		c1=c1*10+Valor(c);
 	break;
-	case 2: 
-	if (c=='+') op = '+';
-	if (c=='-'){ op = '-';}
-	if (c=='/'){ op = '/';}
-	if (c=='*'){ op = '*';}
+	case 2: /*va alamcenando la operacion*/
+	if (c=='+') operacion= '+';
+	if (c=='-'){ operacion= '-';}
+	if (c=='/'){ operacion= '/';}
+	if (c=='*'){ operacion= '*';}
 	break;
 	case 3:
+	/*3er estado ,va almacenando el segundo valor*/
 		c2 =c2*10+Valor(c);
 	default /* error */: break;
 	}
 c = cadena[++i];
 }
 
-if (e == 3) { /* estado final */
-switch (op){
-	
-	case '+':sumar(c1,c2);
-	break;
-	case '-':restar(c1,c2);
-	break;
-	case'/':dividir(c1,c2);
-	break;
-	case '*':multiplicar(c1,c2);
-	break;
-	default /* error */: break;
-	
-}
-}
+if (e == 3) 
+	{ /* estado final */
+		switch (operacion)
+		{
+			case '+':
+				sumar(c1,c2);
+			break;
+			case '-':
+				restar(c1,c2);
+			break;
+			case'/':
+				dividir(c1,c2);
+			break;
+			case '*':
+				multiplicar(c1,c2);
+			break;
+			default /* error */: break;
+		}
+	}
 }
 
 void sumar(int a,int b){
 int resultado=0;
 resultado = a + b;
 printf("%d \n",resultado);
-} /* fin ObtieneValor */
+} 
 
 void restar(int a,int b){
 unsigned resultado =0;
@@ -168,13 +169,13 @@ printf("%d \n",resultado);
 }
 void dividir(int a,int b){
 	float resultado =0;
-	resultado = a/b;
+	resultado = a / b;
 	printf("%f \n",resultado);
 
 }
 void multiplicar(int a,int b){
 	int resultado =0;
-	resultado = a*b;
+	resultado = a * b;
 	printf("%d \n",resultado);
 
 }

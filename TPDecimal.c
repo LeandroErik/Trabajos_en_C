@@ -4,39 +4,36 @@
 
 int Verifica (char *); /* que los caracteres pertenezcan al alfabeto */
 int Columna (int); /* dado un caracter, determina la columna que le  corresponde */
-int EsPalabra (const char *);
-void ObtieneValor (const char *);
+int EsPalabra (const char *);/*Verifica que sea una palabra reconocida*/
+void ObtieneValor (const char *);/*Imprimer el valor reconocido por pantall*/
 
 int main(int argc, char *argv[]){
-	if ( argc == 1 )
+if ( argc == 1 )
 	{
 		printf("Debe ingresar una Cadena en Linea de Comandos\n");
 		return EXIT_FAILURE;
 	}
-	if ( argc != 2 ){
+if ( argc != 2 )
+	{
 		printf("Cantidad de Argumentos Incorrecta\n");
 		return EXIT_FAILURE;
 	}
 
- 
  if (! Verifica(argv[1])) 
 	{
 		printf("Caracteres invalidos\n");
 		return 0;
-
 	}
 	
 	if (EsPalabra(argv[1]))
 	{
 		printf("Pertenece al lenguaje\n");
-	
-		printf("Calculando Valor\n");
 		
 	 	ObtieneValor(argv[1]);
 	 
 		return 0;
 	}
-	printf("no pertenece al lenguaje\n"); 
+	printf("No pertenece al lenguaje\n"); 
 	return 0;
 	}
 	
@@ -51,19 +48,25 @@ int EsPalabra (const char *cadena) { /* Automata 1 */
  unsigned int i = 0; /* recorre la cadena */
  int c = cadena[0]; /* primer caracter */
 
- while (c !='\0') {/*mientras que haya cracteres*/
- e = tt[e][Columna(c)]; /* nuevo estado */
- c = cadena[++i]; /* proximo caracter */
- }
- if (e == 2) /* estado final */ return 1;
+ while (c !='\0')
+ 	 {/*mientras que haya cracteres*/
+ 		e = tt[e][Columna(c)]; /* nuevo estado */
+ 		c = cadena[++i]; /* proximo caracter */
+ 	}
+ if (e == 2) /* estado final */ 
+ return 1;
+
  return 0;
 } /* fin EsPalabra */
 
 int Verifica (char *s) {
  unsigned i;
- for (i=0; s[i]; i++)
- if (! (isdigit(s[i]) || s[i] == '+' || s[i] == '-')) return 0;
- return 1;
+ 	for (i=0; s[i]; i++)
+ 		if (! (isdigit(s[i]) || s[i] == '+' || s[i] == '-'))
+ 		{
+ 			return 0;
+ 		}	
+ 	return 1;
 } /* fin Verifica */
 
 int Columna (int c) {
@@ -80,9 +83,9 @@ int Valor (int c) {
 
 void ObtieneValor (const char *cadena) {
  static int tt [4][3] = {{2,1,1},
- 					{2,3,3},
-					{2,3,3},
-					{3,3,3}};
+ 						{2,3,3},
+						{2,3,3},
+						{3,3,3}};
  int e = 0; /* estado inicial */
  unsigned i = 0; /* recorre la cadena */
  int c = cadena[0]; /* primer caracter */
@@ -90,22 +93,25 @@ void ObtieneValor (const char *cadena) {
 cadena */
  int s = 1; /* signo del número: 1 = positivo; -1 =
 negativo */
- while (c != '\0') {
- e = tt [e][Columna(c)];
- switch (e) {
- case 1: if (c=='-') s = -1;
- break;
- case 2: a = 10 * a + Valor(c);
- break;
- default /* error */: break;
+ while (c != '\0') 
+ 	{
+ 		e = tt [e][Columna(c)];
+ 		switch (e) {
+ 				case 1:
+  				if (c=='-') s = -1;
+ 				break;
+ 				case 2: 
+ 				a = 10 * a + Valor(c);
+ 				break;
+ 				default /* error */: 
+ 				break;
  }
- c = cadena[++i];
+ 	c = cadena[++i];
  }
- if (e == 2) { /* estado final */
-	 
+ if (e == 2) 
+ 	{ /* estado final */
 	printf("Resultado : %d \n",s * a);
-
-}
+	}
 } /* fin ObtieneValor */
 
 
