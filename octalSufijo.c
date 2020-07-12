@@ -4,6 +4,7 @@
  * @file octalSufijos.c
  * @brief  AFD que reconoce "Todos los números enteros en base 8, " con reconocimientos de sufijos
  * @author Marbe Moreno
+ * @author Erik Quispe
  */
 int Verifica (char *); /* que los caracteres pertenezcan al alfabeto */
 int Columna (int,int); /* dado un caracter, determina la columna que le

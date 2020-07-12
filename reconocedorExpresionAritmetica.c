@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
-
+/**
+ * @file reconocedorExpresionAritmetica.c
+ * @brief  AFD que reconoce expresiones aritmeticas y en casi de reconocerlas las realiza y muestra su resultado
+ * @author Marbe Moreno
+ * @author Erik Quispe
+ */
 int Verifica (char *);/* que los caracteres pertenezcan al alfabeto */
 int ColumnaExp (int);/* dado un caracter, determina la columna que le corresponde */
 int Valor (int );/*Obtiene el valor de la tabla*/

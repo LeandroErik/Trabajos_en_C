@@ -2,9 +2,10 @@
 #include <ctype.h>
 #include <stdlib.h>
 /**
- * @file reconocedorEnteros.c
+ * @file reconocedorDeTiposDeEnteros.c
  * @brief  AFD que reconoce "Todos los números enteros en base 8,10 y 16, " con reconocimientos de sufijos
  * @author Marbe Moreno
+ * @author Erik Quispe
  */
 
 int VerificaDecimal (char *); /* que los caracteres pertenezcan al alfabeto */

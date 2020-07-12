@@ -5,6 +5,7 @@
  * @file decimalesSufijos.c
  * @brief  AFD que reconoce "Todos los números enteros en base 10, que pueden estar precedidos por un signo" con reconocimientos de sufijos
  * @author Marbe Moreno
+ * @author Erik Quispe
  */
 int Verifica (char *); /* que los caracteres pertenezcan al alfabeto */
 int Columna (int,char); /* dado un caracter, determina la columna que le

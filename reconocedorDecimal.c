@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+/**
+ * @file reconocedorDecimal.c
+ * @brief  AFD que reconoce "Todos los números enteros decimales, " y en caso de reconocer muestra su valor
+ * @author Marbe Moreno
+ * @author Erik Quispe
+ */
 
 int Verifica (char *); /* que los caracteres pertenezcan al alfabeto */
 int Columna (int); /* dado un caracter, determina la columna que le  corresponde */
