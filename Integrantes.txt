@@ -26,19 +26,19 @@ Solucion Propuesta en :
 Implemente una única solución que reconozca las constantes enteras en C descriptas en la gramatica
 del lenguaje.
 Solucion Propuesta en :
-		reconocedorEntero.c
+		reconocedordeTiposDeEnteros.c
 		  
 			Consigna:
 Desarrolle un programa comando que reciba una cadena que puede representar una constante entera
 decimal con signo y, si lo representa retorne el valor decimal.
 
 Solucion Propuesta en :
-		TPDecimal.c
+		reconocedorDecimal.c
 
 
 			Consigna:
 Desarrolle un programa comando que reciba una expresión aritmética simple y retorne su valor
 
 Solucion Propuesta en :
-		TPExpresionAritmetica.c
+		reconocedorExpresionAritmetica.c
 
