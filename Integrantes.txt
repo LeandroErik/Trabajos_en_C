@@ -1,0 +1,40 @@
+Trabajo Practico de Automatas
+
+	Integrantes
+
+-Marbe Moreno - Legajo:1758330
+
+-Erik Quispe - Legajo:172286
+
+			Soluciones Propuestas
+			Consigna:
+En cada caso, escriba un programa ANSI C que pruebe la implementación realizada.
+Modifique el AFD que reconoce al lenguaje descripto en el para constantes enteras decimales con
+signo para_
+? Constantes octales
+? Constantes hexadecimales
+? Agregue el reconocimiento de los sufijos
+
+Implemente una única solución que reconozca las constantes enteras en C descriptas en la gramatica
+del lenguaje.
+
+Solucion Propuesta en :
+		decimalesSufijos.c
+		hexadecimalSufijo.c
+		octalSufijo.c
+
+		  
+			Consigna:
+Desarrolle un programa comando que reciba una cadena que puede representar una constante entera
+decimal con signo y, si lo representa retorne el valor decimal.
+
+Solucion Propuesta en :
+		TPDecimal.c
+
+
+			Consigna:
+Desarrolle un programa comando que reciba una expresión aritmética simple y retorne su valor
+
+Solucion Propuesta en :
+		TPExpresionAritmetica.c
+
